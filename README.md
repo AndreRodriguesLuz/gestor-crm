@@ -1,22 +1,36 @@
-# 💼 Gestor CRM & Pipeline de Atendimento (Python + SQLite)
+# 💼 Gestor CRM & Pipeline de Atendimento
 
-Aplicação desenvolvida para simular um pipeline de atendimento e vendas corporativo, demonstrando arquitetura de dados relacional, boas práticas de SQL e operações completas de CRUD.
+Aplicação desenvolvida em *Python, Streamlit e SQLite* para simular um pipeline de atendimento e gestão de clientes, aplicando conceitos de CRUD, modelagem relacional, persistência de dados e histórico de interações.
 
-## 🚀 Diferenciais Técnicos & Operações CRUD
+## 🚀 Diferenciais Técnicos
 
-1. **Operações CRUD Completas:**
-   - **Create:** Cadastro de novos leads e registro de interações vinculadas.
-   - **Read:** Consultas com filtragem dinâmica por status de atendimento e histórico de contatos.
-   - **Update:** Atualização reativa das etapas do pipeline do cliente.
-   - **Delete (Soft Delete):** Exclusão lógica de registros (`ativo = 0`), preservando o histórico para auditoria sem perder dados.
+1. *Operações CRUD*
+   - *Create:* cadastro de clientes e registro de interações vinculadas.
+   - *Read:* consultas com filtros por status e visualização do histórico de atendimentos.
+   - *Update:* edição de dados cadastrais e atualização das etapas do pipeline.
+   - *Soft Delete:* arquivamento lógico dos clientes por meio do campo ativo, preservando o histórico e permitindo posterior reativação.
 
-2. **Modelagem Relacional SQLite:** Uso de duas tabelas conectadas via `FOREIGN KEY` (`clientes` e `interacoes`), garantindo integridade referencial.
+2. *Modelagem Relacional com SQLite*
+   - Tabelas clientes e interacoes relacionadas por FOREIGN KEY.
+   - Integridade referencial habilitada no SQLite.
+   - E-mail definido como único para evitar duplicidade de clientes.
 
-3. **Consultas Parametrizadas:** Proteção contra **SQL Injection** em todas as queries.
+3. *Consultas Parametrizadas*
+   - Uso de placeholders ? nas consultas com dados dinâmicos.
+   - Redução do risco de SQL Injection ao evitar concatenação direta de entradas do usuário nas queries.
 
-4. **Arquitetura Limpa:** Separação de responsabilidades entre a camada de persistência (`database.py`) e a camada de interface (`app.py`).
+4. *Separação de Responsabilidades*
+   - app.py: interface, navegação e interação com o usuário.
+   - database.py: conexão, criação das tabelas e operações de persistência.
+
+5. *Histórico de Atendimentos*
+   - Registro de contatos vinculados a cada cliente.
+   - Rastreamento de alterações de status e atualizações cadastrais.
 
 ## 🛠️ Tecnologias Utilizadas
-- **Linguagem:** Python 3.x
-- **Banco de Dados:** SQLite3
-- **Interface:** Streamlit & Pandas
+
+- *Linguagem:* Python 3.x
+- *Banco de Dados:* SQLite3
+- *Interface:* Streamlit
+- *Manipulação de Dados:* Pandas
+- *Versionamento:* Git / GitHub
